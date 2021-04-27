@@ -1,0 +1,28 @@
+{
+  "name": "fundraiseup-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "scripts": {
+    "dev:build": "webpack --config webpack.config.dev.js --color --progress --watch",
+    "dev:server": "NODE_ENV=development nodemon -w server server/index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "clean-webpack-plugin": "latest",
+    "html-webpack-plugin": "^5.3.1",
+    "nodemon": "^2.0.7",
+    "vue-loader": "^15.9.6",
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^5.35.1",
+    "webpack-cli": "^4.6.0"
+  },
+  "dependencies": {
+    "koa": "^2.13.1",
+    "koa-mount": "^4.0.0",
+    "koa-static": "^5.0.0",
+    "vue": "^2.6.12",
+    "vuex": "^3.6.2"
+  }
+}
