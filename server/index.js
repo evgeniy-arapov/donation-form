@@ -1,19 +1,23 @@
 const Koa = require('koa')
-const serve = require('koa-static')
-const mount = require('koa-mount')
-const fs = require('fs')
 const path = require('path')
-const util = require('util');
+const webpack = require('webpack');
 
-const readFile = util.promisify(fs.readFile);
+const clientConfig = require('../webpack.config.dev.js');
+const clientCompiler = webpack(clientConfig);
+const devMiddleware = require('./utils/koa-webpack-dev-middleware')(
+  clientCompiler, {
+    publicPath: clientConfig.output.publicPath,
+  }
+);
 
 const app = new Koa()
 
-app.use(mount('/dist', serve(path.join(__dirname, '../dist'))))
+app.use(devMiddleware);
 
 app.use(async (ctx) => {
   ctx.set('Content-Type', 'text/html')
-  ctx.body = await readFile(path.join(__dirname, '../dist/index.html'))
+
+  ctx.body = devMiddleware.context.outputFileSystem.readFileSync(path.join(clientConfig.output.path, 'index.html'));
 });
 
 const PORT = process.env.PORT || 3000

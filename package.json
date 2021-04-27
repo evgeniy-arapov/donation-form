@@ -4,7 +4,6 @@
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "dev:build": "webpack --config webpack.config.dev.js --color --progress --watch",
     "dev:server": "NODE_ENV=development nodemon -w server server/index.js"
   },
   "author": "",
@@ -13,16 +12,21 @@
     "clean-webpack-plugin": "latest",
     "html-webpack-plugin": "^5.3.1",
     "nodemon": "^2.0.7",
+    "sass": "^1.32.11",
+    "sass-loader": "^11.0.1",
     "vue-loader": "^15.9.6",
     "vue-template-compiler": "^2.6.12",
     "webpack": "^5.35.1",
     "webpack-cli": "^4.6.0"
   },
   "dependencies": {
+    "css-loader": "^5.2.4",
     "koa": "^2.13.1",
     "koa-mount": "^4.0.0",
     "koa-static": "^5.0.0",
+    "style-loader": "^2.0.0",
     "vue": "^2.6.12",
-    "vuex": "^3.6.2"
+    "vuex": "^3.6.2",
+    "webpack-dev-middleware": "^4.1.0"
   }
 }
