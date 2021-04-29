@@ -4,7 +4,10 @@
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "dev:server": "NODE_ENV=development nodemon -w server server/index.js"
+    "dev": "NODE_ENV=development nodemon -w server server/index.js",
+    "prod": "npm run prod:build && npm run prod:server",
+    "prod:build": "webpack --config webpack.config.prod.js --color --progress",
+    "prod:server": "NODE_ENV=production node server/index.js"
   },
   "author": "",
   "license": "MIT",
@@ -17,10 +20,13 @@
     "vue-loader": "^15.9.6",
     "vue-template-compiler": "^2.6.12",
     "webpack": "^5.35.1",
-    "webpack-cli": "^4.6.0"
+    "webpack-cli": "^4.6.0",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-merge": "^5.7.3"
   },
   "dependencies": {
     "css-loader": "^5.2.4",
+    "eslint": "^7.25.0",
     "koa": "^2.13.1",
     "koa-mount": "^4.0.0",
     "koa-static": "^5.0.0",
