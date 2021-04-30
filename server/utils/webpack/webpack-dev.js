@@ -6,13 +6,15 @@ module.exports = (app) => {
   const clientCompiler = webpack(clientConfig)
 
   const devMiddleware = require('./koa-webpack-dev-middleware')(
-    clientCompiler, {
+    clientCompiler,
+    {
       publicPath: clientConfig.output.publicPath
     }
   )
 
   const hotMiddleware = require('./koa-webpack-hot-middleware')(
-    clientCompiler, {
+    clientCompiler,
+    {
       heartbeat: 5000
     }
   )

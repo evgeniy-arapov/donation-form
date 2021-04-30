@@ -21,7 +21,7 @@ module.exports = {
         loader: 'vue-loader'
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.(sa|s?c)ss$/i,
         use: [
           // Creates `style` nodes from JS strings
           'style-loader',
@@ -35,13 +35,16 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.vue']
+    extensions: ['.js', '.vue'],
+    alias: {
+      '@': path.resolve(__dirname, 'client')
+    }
   },
 
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: './client/index.html'
+      template: './client/public/index.html'
     }),
     new VueLoaderPlugin()
   ]

@@ -1,9 +1,9 @@
 import Vue from 'vue'
+/* order makes sense, bootstrap must be before App it affects style priority */
+import "@/plugins/bootstrap"
 import App from './App'
-import store from './store'
 
 new Vue({
-  render: (h) => h(App),
   el: '#app',
-  store
+  render: (h) => h(App)
 })
