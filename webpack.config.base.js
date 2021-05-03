@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const path = require('path')
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: [
@@ -42,7 +42,7 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(),
+    new Dotenv(),
     new HtmlWebpackPlugin({
       template: './client/public/index.html'
     }),

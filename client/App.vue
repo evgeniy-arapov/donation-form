@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <b-container>
-      <DonationForm />
+      <div class="donation-wrapper">
+        <DonationForm />
+      </div>
     </b-container>
   </div>
 </template>
@@ -25,5 +27,19 @@ export default Vue.extend({
   #app {
     display: flex;
     flex-direction: column;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+  }
+
+  .donation-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
   }
 </style>
