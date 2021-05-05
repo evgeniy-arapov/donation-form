@@ -1,43 +1,29 @@
 const Router = require('koa-router')
 const router = new Router()
 const Donation = require('../models/donation')
+const Currency = require('../models/currency')
 
 const apiRouter = new Router({
   prefix: process.env.API_PATH
 })
 
 apiRouter.get('/currencies', async (ctx) => {
-  ctx.body = [
-    {
-      name: 'US Dollar',
-      code: 'USD',
-      symbol: '$',
-      rate: 1
-    },
-    {
-      name: 'Euro',
-      code: 'EUR',
-      symbol: '€',
-      rate: 0.897597
-    },
-    {
-      name: 'British Pound',
-      code: 'GBP',
-      symbol: '£',
-      rate: 0.81755
-    },
-    {
-      name: 'Russian Ruble',
-      code: 'RUB',
-      symbol: '₽',
-      rate: 63.461993
-    }
-  ]
+  const res = await Currency.find({})
+  ctx.body = res.map(item => item.toJSON())
 })
 
 apiRouter.post('/donate', async ctx => {
-  console.log(ctx.request.body)
-  await Donation.create(ctx.request.body)
+  const {
+    amount,
+    currency
+  } = ctx.request.body
+  const matchCurrencies = await Currency.find({ code: currency })
+  if (!matchCurrencies.length) return ctx.throw(400, 'not available currency with code ' + currency)
+
+  await Donation.create({
+    amount,
+    currency
+  })
   ctx.body = { ok: true }
 })
 

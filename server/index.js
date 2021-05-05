@@ -13,6 +13,6 @@ app.ready().then((app) => {
 
   const port = process.env.API_PORT || 3000
   app.listen(port, () => {
-    console.log(`Listen on port ${port}`)
+    console.log(`Listen on http://localhost:${port}`)
   })
 })

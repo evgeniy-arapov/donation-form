@@ -1,13 +1,14 @@
 {
-  "name": "fundraiseup-test",
+  "name": "donation-form",
   "version": "1.0.0",
   "description": "",
-  "main": "server/app.js",
+  "main": "server/index.js",
   "scripts": {
     "dev": "NODE_ENV=development nodemon -w server server/index.js",
     "prod": "npm run prod:build && npm run prod:server",
     "prod:build": "webpack --config webpack.config.prod.js --color --progress",
-    "prod:server": "NODE_ENV=production node server/app.js"
+    "prod:server": "NODE_ENV=production node server/app.js",
+    "migrate": "npx migrate-mongoose up"
   },
   "author": "",
   "license": "MIT",
@@ -34,6 +35,7 @@
     "koa-logger": "^3.2.1",
     "koa-router": "^7.4.0",
     "koa-webpack": "^5.0.2",
+    "migrate-mongoose": "^4.0.0",
     "mongoose": "^5.12.7",
     "sass-loader": "^7.3.1",
     "style-loader": "^2.0.0",

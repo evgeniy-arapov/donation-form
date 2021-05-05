@@ -5,7 +5,7 @@ const currencySchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  code:{
+  code: {
     type: String,
     unique: true,
     required: true
@@ -19,11 +19,13 @@ const currencySchema = new mongoose.Schema({
     required: true
   }
 }, {
-  collection: "currencies"
+  collection: 'currencies'
 })
 
 currencySchema.set('toJSON', {
-  virtuals: true
-});
+  virtuals: true,
+  versionKey: false,
+  transform: function (doc, ret) { delete ret._id }
+})
 
 module.exports = mongoose.model('Currency', currencySchema)

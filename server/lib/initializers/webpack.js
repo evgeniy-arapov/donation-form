@@ -5,7 +5,6 @@ module.exports = async function webpackInit (app, router) {
   const compiler = webpack(config)
 
   const middleware = await koaWebpack({ compiler })
-  console.log('koaWebpack')
   app.use(middleware)
 
   const path = require('path')
