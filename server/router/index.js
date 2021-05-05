@@ -1,5 +1,6 @@
 const Router = require('koa-router')
 const router = new Router()
+const Donation = require('../models/donation')
 
 const apiRouter = new Router({
   prefix: process.env.API_PATH
@@ -36,10 +37,11 @@ apiRouter.get('/currencies', async (ctx) => {
 
 apiRouter.post('/donate', async ctx => {
   console.log(ctx.request.body)
+  await Donation.create(ctx.request.body)
   ctx.body = { ok: true }
-  ctx.status = 200
 })
 
+apiRouter.all('*', ctx => ctx.throw(405))
 
 router.use(apiRouter.routes())
 router.use(apiRouter.allowedMethods())

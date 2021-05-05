@@ -186,7 +186,7 @@ export default Vue.extend({
         this.isLoading = true
         await this.donate({
           amount: this.suggestion,
-          currencyCode: this.selectedCurrency.code
+          currency: this.selectedCurrency.code
         })
         this.$bvToast.toast('Thank you for your donation!', {
           title: 'Success',

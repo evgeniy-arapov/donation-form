@@ -19,8 +19,8 @@ export default new Vuex.Store({
       commit('setCurrencies', data)
     },
 
-    async donate(context, { amount, currencyCode }) {
-      await api.donate({amount, currencyCode})
+    async donate(context, { amount, currency }) {
+      await api.donate({amount, currency})
     }
   },
 
